@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    min-height: 100svh;
+}
+
+:root {
+  /* FONTS */
+  --pr2-primary-font: "Lato", sans-serif;
+
+  /* BRANDING COLORS */
+--pr2-color-1: #1c1c1c;
+--pr2-color-2: #ff4d4d;
+--pr2-color-3: #ff9d00;
+--pr2-color-4: #4cae4f;
+--pr2-color-5: #1f89e5;
+--pr2-color-6: rgb(248, 235, 235);
+  /* BACKGROUND-COLORS */
+  --pr2-primary-bg: var(--pr2-color-1);
+
+  /* TEXT-COLORS */
+  --pr2-primary-text: var(--pr2-color-6);
+  --pr2-secondary-text: var(--pr2-color-3);
+  --pr2-tertiary-text:var(--pr2-color-1);
+
+  /* BORDER-COLORS */
+  --pr2-primary-border: 1px solid var(--pr2-color-3);
+
+  /* BORDER RADIUS */
+  --pr2-br: 8px;
+
+  /* SPACINGS */
+  --pr2-margin-xs: 10px;
+  --pr2-margin-s: 20px;
+  --pr2-margin-m: 30px;
+  --pr2-margin-l: 40px;
+  --pr2-margin-xl: 50px;
+  --pr2-margin-section: 100px;
+
+  --pr2-padding-xs: 10px;
+  --pr2-padding-s: 20px;
+  --pr2-padding-m: 30px;
+  --pr2-padding-l: 40px;
+  --pr2-padding-xl: 50px;
+
+  --pr2-gap-xs: 10px;
+  --pr2-gap-s: 20px;
+  --pr2-gap-m: 30px;
+  --pr2-gap-l: 40px;
+  --pr2-gap-xl: 50px;
+
+}
+body{
+  display: flex;
+  background-color: var(--pr2-primary-bg);
+  color: var(--pr2-color-6);
+  height: 100%;
+  flex-direction: column;
+}
+.flexContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+nav{
+
+background-color: var(--pr2-color-1);
+color: var(--pr2-color-6); 
+gap:var(--pr2-gap-s);
+justify-content: space-around;
+}
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: space-evenly;
+
+}
+nav ul li{
+  margin: var(--pr2-margin-xs);
+}
+nav ul li a{
+  color: var(--pr2-color-6);
+}
+.siluetaB{
+  display: none;
+  width: 20px;
+  cursor: pointer;
+}
+.imgz{
+  height: 150px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--pr2-br);
+}
+.imgz>img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+main>section>div>select{
+  display: flex;
+  color: var(--pr2-color-6);
+  background-color: var(--pr2-primary-bg);
+  border-radius: var(--pr2-br);
+  border: var(--pr2-primary-border);
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.filtros{
+  display: flex;
+  background-image: url(./assets/banner.png);
+}
+main{
+  flex: 1;
+}
+main>section{
+  align-items:center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--pr2-gap-s);
+  padding: var(--pr2-padding-s);
+}
+main>section>div {
+  font-size: 10px;
+  /*border: var(--pr2-primary-border);*/
+  border-radius: var(--pr2-br);
+  padding: var(--pr2-padding-xs);  
+  width: 200px;
+  flex: 0 0 auto;
+  box-shadow: 10px 15px 22px -3px rgba(255,157,0,0.45);
+  justify-items: center;
+  align-items: center;
+  transition: 0.2s;
+}
+main>section:hover > :not(:hover){
+  opacity: 0.3;
+}
+main>section>div :hover{
+transform: scale(1.1);
+}
+
+main>section>div> h3, h4{
+margin: var(--pr2-margin-xs);
+}
+main>section>div>button{
+  background-color: var(--pr2-primary-bg);
+  color: var(--pr2-color-6);
+  border: var(--pr2-primary-border);
+  border-radius: 2px;
+  width: 150px;
+  height: 20px;
+  cursor: pointer;
+  box-shadow: 0px 0px 5px 1px rgba(255,157,0,0.75);
+}
+footer{
+  display: flex;
+  justify-content: space-between;
+  margin: var(--pr2-margin-xs);
+  padding: var(--pr2-padding-xs);
+  gap: var(--pr2-gap-s);
+  background-color: var(--pr2-color-6);
+  color: var(--pr2-color-1);
+}
+footer>div>ul>li>a{
+  color: var(--pr2-color-1);
+}
+
+
+@media (max-width:800px) {
+  nav{
+    flex-direction: column;
+    align-items: center;
+  }
+  nav>img{order: 0;
+  }
+  .siluetaB {
+    display: block;
+    height: 30px;
+    width: 30px;
+    object-fit: contain;
+  }
+  nav ul {
+    flex-direction: column;
+    justify-content: space-around;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+    nav ul.closed {
+    width: 0px;
+    display: none;
+  }
+  footer{
+    flex-direction: column;
+  }
+}
