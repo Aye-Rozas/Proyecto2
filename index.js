@@ -477,13 +477,12 @@ todosFiltros.appendChild(divFiltro4);
 myMain.appendChild(todosFiltros);
 
 //funcion para unir los filtros
-
-function fillZapas(zapatillas){
+/*function fillZapas(zapatillas){
   const filteredZapas= []; //array vacio para subir las opciones de filtro elegidas
   for (const zapatilla of zapatillas) {
     let filteredOk=true;
     //se deja en positivo pero se tiene que negar los otros if para verificar si cumple o no
-    if(Perfil&&zapatilla.perfil!==Perfil){//modifico y agrego!
+    if(Perfiles&&zapatilla.perfil!==Perfil){//modifico y agrego !
       filteredOk=false;
     }
     if(Publicos&&zapatilla.público!==Publicos){
@@ -505,6 +504,28 @@ function fillZapas(zapatillas){
     // se comenta porque no funciona correctamente//document.body.innerHTML+='<p>No se han encontrado resultados</p>';
   }
   return filteredZapas;
+}
+fillZapas(zapatillas);*/
+function fillZapas(zapatillas) {
+  const condiciones=[
+    {nombre:fillPerfil, resultado:fillPerfil(zapatillas.perfil)},
+    {nombre:fillTallas, resultado:fillTallas(zapatillas.talla)},
+    {nombre:fillPublicos, resultado:fillPublicos(zapatillas.público)},
+    {nombre:fillColores, resultado:fillColores(zapatillas.color)},
+  ];
+  let todasCumplidas= true;
+  condiciones.forEach(cond=>{
+    if(!cond.resultado){
+      console.log(`la condicion ${cond.nombre} no se cumple`);
+      todasCumplidas=false;      
+    }
+  });
+  if(todasCumplidas){
+    console.log("todas las condiciones se cumplen");
+    return true;    
+  }
+  else
+  {return false;}
 }
 fillZapas(zapatillas);
 
