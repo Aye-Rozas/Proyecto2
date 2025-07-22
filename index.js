@@ -298,6 +298,7 @@ for (const zapatilla of zapatillas) {
     filtered.push(zapatilla);
   }
 }
+console.log(filtered);
 impZapas(filtered);
 }
 const fillPerfil=()=>{
@@ -306,7 +307,8 @@ const fillPerfil=()=>{
   for (const zapatilla of zapatillas) {
     if(!Perfiles.includes(zapatilla.perfil)){
       Perfiles.push(zapatilla.perfil);
-    }
+    }//console log para revisar cada filtro
+    //console.log("Perfil encontrado en zapatilla:", zapatilla.nombre, "-", zapatilla.perfil);
   }
 }
 fillPerfil();
@@ -339,6 +341,7 @@ tallasUnicas.splice(0);//limpiar el array
             }
   }
 }
+//console.log("Tallas de zapatilla:", zapatilla.nombre, "-", zapatilla.talla);
 }
 tallasUnicas.sort((a, b) => a - b); // ordeena por numero las tallas
 }
@@ -348,6 +351,7 @@ const filtrarT= ()=>{
   const filtered = zapatillas.filter(z =>
     Array.isArray(z.talla) && z.talla.includes(parseInt(Talla))
   );
+  console.log(filtered);
   impZapas(filtered);
 }
 const createSelectTallas= ()=>{
@@ -375,6 +379,7 @@ const fillColores=()=>{
       if (!Colores.includes(zc)){
       Colores.push(zc);
     }
+    //console.log("Colores de zapatilla:", zapatilla.nombre, "-", zapatilla.color);
   }}
 
 /*const ColorDoble= ()=>{
@@ -397,6 +402,7 @@ fillColores();
     //Array.isArray se usa para comprobar dentro del array el recorrido
     Array.isArray(z.color) && z.color.includes(color)
   );
+  console.log(filtered);
   impZapas(filtered);
   }
 
@@ -429,6 +435,7 @@ const fillPublicos=()=>{
       Publicos.push(p);
       }
     }
+    //console.log("Público de zapatilla:", zapatilla.nombre, "-", zapatilla.público);
 }}
 fillPublicos();
   const filtrarP= ()=>{
@@ -441,6 +448,7 @@ fillPublicos();
       return pub===público;
     }
   });
+  console.log(filtered);
   impZapas(filtered);
 }
 
