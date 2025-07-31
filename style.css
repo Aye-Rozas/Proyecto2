@@ -69,13 +69,17 @@ body{
   background-color: var(--pr2-primary-bg);
   color: var(--pr2-color-6);
   min-height: 100svh;
-  width: 100svw;
+ /* width: 100svw;*/
   flex-direction: column;
 }
 .flexContainer{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+header{
+  margin: var(--pr2-margin-xs);
+  padding: var(--pr2-padding-xs);
 }
 nav{
 background-color: var(--pr2-color-1);
@@ -113,16 +117,6 @@ nav ul li a{
   height: 100%;
   object-fit: cover;
 }
-main>section>div>select{
-  display: flex;
-  color: var(--pr2-color-6);
-  background-color: var(--pr2-primary-bg);
-  border-radius: var(--pr2-br);
-  border: var(--pr2-primary-border);
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-}
 .filtros{
   display: flex;
   height: 15svh;
@@ -136,13 +130,21 @@ main>section>div>select{
   background-color: var(--pr2-color-1);
   color: var(--pr2-color-6);
   border-radius: var(--pr2-br);
+  cursor: pointer;
 }
 .filtros>label{
   background-color: var(--pr2-color-1);
   border: 2px,solid, black;
   border-radius: var(--pr2-br);
   height: 5svh;
+  width: 55svh;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
 }
+.filtros>label>input{margin: 6px;
+align-content: space-around;}
 .buttonFill{
   background-color: var(--pr2-primary-bg);
   color: var(--pr2-color-6);
@@ -227,6 +229,13 @@ footer>ul>li>a{
     nav ul.closed {
     width: 0px;
     display: none;
+  }
+  .filtros{
+    height: 30svh;
+    flex-direction: column;
+  }
+  .filtros>label{
+    height: 12svh;
   }
   footer{
     flex-direction: column;

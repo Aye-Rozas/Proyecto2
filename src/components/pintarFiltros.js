@@ -36,32 +36,39 @@ const fillColores=()=>{
     }
   }}
 };
-
+const ceroSugeridos = () => {//funcion nueva para borrar sugerido previo si existia
+  const main = document.querySelector("main");
+  const msjSugerido = main.querySelector("h2");
+  const sectionAnterior = document.getElementById("Zapatillas");
+  if (msjSugerido) msjSugerido.remove();
+  if (sectionAnterior) sectionAnterior.remove();
+};
 
 const filtrarZapatillas = () => {// funcion nueva que guarda todos los resultados que coincidan 
+    ceroSugeridos(); //limpiar sugerencia previa
+    if (precio && precio.length < 2) return;//esperar a cargar zapatilla
     let filtered = zapatillas.filter(z => {
-      const tieneTalla = !Talla || (Array.isArray(z.talla) && z.talla.includes(parseInt(Talla)));
-      const tieneColor = !color || (Array.isArray(z.color) ? z.color.includes(color) : z.color === color);
-      const tienePrecio = !precio || (typeof z.precio === 'number' && Math.abs(z.precio - parseFloat(precio)) <= 10);//se agrega input de precio
-      return tieneTalla && tieneColor && tienePrecio;
+      const tallaOk = !Talla || (Array.isArray(z.talla) && z.talla.includes(parseInt(Talla)));
+      const colorOk = !color || (Array.isArray(z.color) ? z.color.includes(color) : z.color === color);
+      const precioOk = !precio || (typeof z.precio === 'number' && Math.abs(z.precio - parseFloat(precio)) <= 10);//se agrega input de precio
+      return tallaOk && colorOk && precioOk;
     });
     
-    const main = document.querySelector("main");
-    if (filtered.length === 0) {
-      const mensaje = document.createElement("h2");
-    mensaje.textContent = "Productos sugeridos";
-    mensaje.style.color = "white";
-
+    const main = document.querySelector("main"); //selecciono main donde va dentro el msj de sugerencias
+    if (filtered.length === 0) { // if para crear productos sugeridos
+      const msj = document.createElement("h2");
+    msj.textContent = "Productos sugeridos";
+    msj.style.color = "white";
     const existingSection = document.getElementById("Zapatillas");
   if (existingSection) {
     existingSection.remove();
   }
-  main.appendChild(mensaje);
+  main.appendChild(msj);
     const copia = [...zapatillas];
     filtered = [];
-    for (let i = 0; i < 3 && copia.length > 0; i++) {
-      const randomIndex = Math.floor(Math.random() * copia.length);
-      filtered.push(copia.splice(randomIndex, 1)[0]);
+    for (let i = 0; i < 3 && copia.length > 0; i++) {// bulce que repetimos 3 veces para tener los productos aleatorios y sin repetir
+      const prodAleatorio = Math.floor(Math.random() * copia.length);
+      filtered.push(copia.splice(prodAleatorio, 1)[0]);
     }
   }
     pintarZapatillas(filtered, main);
@@ -127,6 +134,7 @@ const cerofiltros=()=>{
   buttonFill.addEventListener("click",reinicioB);
 
   function reinicioB(){
+    ceroSugeridos();
     tallasUnicas.splice(0);
     fillTallas();
     Colores.splice(0);
