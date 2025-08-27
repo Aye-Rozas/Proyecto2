@@ -49,14 +49,8 @@ const pintarFiltros = (father) => {
   const filtrarZapatillas = () => {
     // funcion nueva que guarda todos los resultados que coincidan
     ceroSugeridos(); //limpiar sugerencia previa
-    if (
-      precio !== undefined &&
-      precio !== null &&
-      precio.toString().trim().length < 2
-    ) {
-      pintarZapatillas(zapatillas, document.querySelector('main'));
-      return;
-    } //esperar a cargar zapatilla//porque no funciona como corresponde?contanco , no es string lo pasaremos a string para que pueda contar con .length//esta condicion obliga a que esten los 3 puntos corresctos para generar la zapatilla
+    const precioValido=precio &&  precio.toString().trim().length >=2;
+     //esperar a cargar zapatilla//porque no funciona como corresponde?contanco , no es string lo pasaremos a string para que pueda contar con .length//esta condicion obliga a que esten los 3 puntos correctos para generar la zapatilla
     let filtered = zapatillas.filter((z) => {
       const tallaOk =
         !Talla || (Array.isArray(z.talla) && z.talla.includes(parseInt(Talla)));
@@ -65,7 +59,7 @@ const pintarFiltros = (father) => {
         (Array.isArray(z.color) ? z.color.includes(color) : z.color === color);
       //por la misma razon hay que parsear el precio por si viene como string
       const precioOk =
-        !precio ||
+        !precioValido ||
         (!isNaN(parseFloat(z.precio)) &&
           Math.abs(parseFloat(z.precio) - parseFloat(precio)) <= 10); //se agrega input de precio
       /*console.log('number');*/ //log para verificar si cumple precio
